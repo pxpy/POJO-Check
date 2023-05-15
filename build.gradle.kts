@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "me.panxin"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -13,7 +13,7 @@ repositories {
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
     version.set("2021.2")
-    type.set("IC") // Target IDE Platform
+    type.set("IU") // Target IDE Platform
     plugins.set(listOf("com.intellij.java"))
 }
 
@@ -31,8 +31,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("212")
-        untilBuild.set("222.*")
+        sinceBuild.set("193")
+        untilBuild.set("231.*")
     }
 
     signPlugin {
