@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>me.panxin.code-tool</id>
+    <id>me.panxin.plugin.idea.pojocheck</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
@@ -14,9 +14,15 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    开发辅助工具，主要功能: <br>
-    1. 检查VO、DTO、PO等是否重写tostring或加@Data注解<br>
-  ]]></description>
+Development Auxiliary Tool<br>
+In formal projects, a large amount of logging is required. Sometimes, the code log.info(user) is used to record information inside the user object. However, if the User class does not override the toString method, the logged information will only include the package name and class name, without recording important information.<br>
+This plugin checks whether VO (Value Object), DTO (Data Transfer Object), PO (Persistent Object), and other classes have overridden the toString method or added the @Data annotation.
+By default, it scans classes in the package paths of model, vo, dto, and po, as well as classes in other  paths that end with VO, PO, or DTO.
+
+Usage:<br>
+Go to the menu bar, select "Tools" -> "POJO Check". The report will be generated in the project's root directory. The default shortcut is Ctrl+Shift+9, but you can configure it.<br>
+The "Problems" tab at the bottom of IntelliJ IDEA will automatically detect and prompt whether the current file has any issues.
+]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -37,14 +43,13 @@
     <change-notes>
         <![CDATA[
       1.0.0 项目初始化<br>
-      1.0.1 搭建项目框架
         ]]>
     </change-notes>
     <actions>
         <!-- 在此处添加你的Action -->
         <action class="me.panxin.plugin.idea.pojocheck.action.CheckToStringAction"
                 text="POJO Check"
-                description="检查POJO命名及是否重写tostring方法"
+                description="检查POJO命名及是否重写toString方法"
 
         >
             <add-to-group group-id="ToolsMenu" anchor="first"/>
