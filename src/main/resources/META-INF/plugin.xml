@@ -1,0 +1,55 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>me.panxin.code-tool</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>POJO Check</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="panxin@panxin.me" url="https://panxin.me">pan</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    开发辅助工具，主要功能: <br>
+    1. 检查VO、DTO、PO等是否重写tostring或加@Data注解<br>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection
+                language="JAVA"
+                implementationClass="me.panxin.plugin.idea.pojocheck.inspection.ToStringMethodInspection"
+                displayName="Missing toString Method"
+                groupPath="Java"
+                enabledByDefault="true"
+                groupName="POJO Check"/>
+    </extensions>
+    <change-notes>
+        <![CDATA[
+      1.0.0 项目初始化<br>
+      1.0.1 搭建项目框架
+        ]]>
+    </change-notes>
+    <actions>
+        <!-- 在此处添加你的Action -->
+        <action class="me.panxin.plugin.idea.pojocheck.action.CheckToStringAction"
+                text="POJO Check"
+                description="检查POJO命名及是否重写tostring方法"
+
+        >
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <!-- 该标签表示通过快捷键触发Action，注意快捷键可能会冲突，导致功能无法被触发，更换绑定的快捷键即可 -->
+            <keyboard-shortcut first-keystroke="control shift 9" keymap="$default"/>
+        </action>
+    </actions>
+</idea-plugin>
