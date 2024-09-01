@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "me.panxin"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -32,7 +32,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("193")
-        untilBuild.set("231.*")
+        untilBuild.set("242.*")
     }
 
     signPlugin {

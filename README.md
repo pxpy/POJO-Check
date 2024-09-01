@@ -1,4 +1,7 @@
-开发辅助工具 <br>
+## 开发辅助工具 <br>
+
+方便入门idea插件开发
+
 正式项目需要打大量日志，有时候log.info(user)来记录user内的信息，<br>
 但如果User类没有重写toString方法，在日志中记录的信息只有包名+类名，没有记录重要信息<br>
 本插件检查VO、DTO、PO等是否重写toString或加@Data注解<br>
